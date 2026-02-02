@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+echo "------------------------------------------------------------------"
+echo "   VAN HELSING CUSTOM PORTAL EDITION - LOADED SUCCESSFULLY v2.0   "
+echo "------------------------------------------------------------------"
+sleep 2
+
 #Title........: van_helsing.sh
 #Description..: This is a multi-use bash script for Linux systems to audit wireless networks.
 #Author.......: v1s1t0r
