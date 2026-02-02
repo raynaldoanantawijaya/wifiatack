@@ -5,9 +5,12 @@
 
 echo "[*] Tahap 1: Mematikan Pengganggu (NetworkManager)..."
 # Ini yang bikin Wi-Fi sering on-off sendiri di VM
+# Kita pakai 'mask' agar dia TIDAK BISA hidup lagi sendiri (Mati Total)
 sudo airmon-ng check kill
 sudo systemctl stop NetworkManager
+sudo systemctl mask NetworkManager  # Kunci mati
 sudo systemctl stop wpa_supplicant
+sudo systemctl mask wpa_supplicant  # Kunci mati
 
 echo "[*] Tahap 2: Mencegah Power Saving..."
 # Mencegah kartu 'tidur' otomatis saat idle

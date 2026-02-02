@@ -11,6 +11,10 @@ sudo iwconfig wlan0 txpower auto 2>/dev/null
 sudo iwconfig wlan0mon txpower auto 2>/dev/null
 
 echo "[*] Tahap 2: Menyalakan Service Jaringan..."
+# Buka kunci 'mask' agar bisa hidup lagi
+sudo systemctl unmask NetworkManager
+sudo systemctl unmask wpa_supplicant
+
 # Nyalakan kembali NetworkManager untuk internet
 sudo systemctl start wpa_supplicant
 sudo systemctl start NetworkManager

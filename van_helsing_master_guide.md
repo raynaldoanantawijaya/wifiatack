@@ -43,18 +43,16 @@ Pastikan Anda sudah punya file **Handshake** target. Kalau belum punya, lihat **
 ### B. Memasang Portal Custom (IndiHome/Wifi.id/dll)
 Sebelum menyerang, pilih dulu mau pakai tampilan apa.
 
-*   **Pakai IndiHome**: Jalankan perintah ini di tab terminal baru (Ctrl+Shift+T):
+*   **PILIHAN A: IndiHome (NEW: Fitur Psychological Warfare)**
+    Portal ini sekarang dilengkapi **Simulasi Update Firmware**. Korban akan melihat loading "Mengupdate Security..." selama 10 detik sebelum diminta password. Ini membuat mereka lebih percaya.
     ```bash
     # Asumsi file ada di Desktop/indihome_portal
     cp -r ~/Desktop/indihome_portal/* ~/Van Helsing/www/captiveportals/es/
     ```
     *(Kita "membajak" slot bahasa Spanyol)*
 
-*   **Pakai Wifi.id**:
-    ```bash
-    cp -r ~/Desktop/wifi_id_portal/* ~/Van Helsing/www/captiveportals/fr/
-    ```
-    *(Kita "membajak" slot bahasa Prancis)*
+*   **PILIHAN B: Portal Lainnya (Wifi.id, Biznet, dll)**
+    Lihat folder masing-masing yang sudah saya sertakan.
 
 ### C. Eksekusi Serangan
 Di menu utama Van Helsing:
@@ -90,6 +88,17 @@ Kalau belum punya handshake, lakukan ini dulu.
 4.  **Pilih Target & Metode**: Pilih target -> Pilih `1` (Deauth aireplay).
 5.  Tunggu **20-30 detik**.
 6.  Jika sukses, muncul `Congratulations!`. Simpan file di default path (`/root/...`).
+
+### B. Cara Otomatis (Anti Gagal - Script Super)
+Jika cara di atas gagal terus (timeout), pakai script Pintar buatan saya: `super_handshake.sh`.
+1.  Buka terminal baru.
+2.  Jalankan perintah (Ganti MAC dan Channel sesuai target):
+    ```bash
+    sudo bash super_handshake.sh wlan0 28:87:BA:68:BC:6F 4
+    ```
+3.  Script ini akan **terus-menerus** "memancing" sampai dapat. Tidak ada timeout.
+4.  Jika sukses, file akan tersimpan sebagai `super_capture-01.cap`.
+5.  Gunakan file ini saat diminta di menu Evil Twin.
 
 ---
 
