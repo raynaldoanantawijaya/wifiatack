@@ -41,18 +41,18 @@ Ini serangan andalan untuk mencuri password dengan menipu korban.
 Pastikan Anda sudah punya file **Handshake** target. Kalau belum punya, lihat **BAB 4** dulu.
 
 ### B. Memasang Portal Custom (IndiHome/Wifi.id/dll)
-Sebelum menyerang, pilih dulu mau pakai tampilan apa.
+Gunakan alat bantu yang sudah saya buatkan agar tidak perlu copy-paste manual.
 
-*   **PILIHAN A: IndiHome (NEW: Fitur Psychological Warfare)**
-    Portal ini sekarang dilengkapi **Simulasi Update Firmware**. Korban akan melihat loading "Mengupdate Security..." selama 10 detik sebelum diminta password. Ini membuat mereka lebih percaya.
+1.  **Buka Terminal** baru.
+2.  **Jalankan Portal Selector**:
     ```bash
-    # Asumsi file ada di Desktop/indihome_portal
-    cp -r ~/Desktop/indihome_portal/* ~/Van Helsing/www/captiveportals/es/
+    sudo bash portal_selector.sh
     ```
-    *(Kita "membajak" slot bahasa Spanyol)*
+3.  Pilih nomor portal yang diinginkan (Misal: `1` untuk IndiHome).
+4.  Script akan otomatis memasangnya di **Slot Bahasa Spanyol (Spanish)**.
 
-*   **PILIHAN B: Portal Lainnya (Wifi.id, Biznet, dll)**
-    Lihat folder masing-masing yang sudah saya sertakan.
+**PENTING**:
+Nanti saat menjalankan Evil Twin di menu Van Helsing, ketika ditanya bahasa, pilih **SPANISH (2)**.
 
 ### C. Eksekusi Serangan
 Di menu utama Van Helsing:
