@@ -12832,7 +12832,7 @@ function set_captive_portal_page() {
 		"GERMAN") custom_portal_code="de" ;;
 	esac
 
-	local custom_portal_path="${script_path}/www/captiveportals/${custom_portal_code}/index.html"
+	local custom_portal_path="./www/captiveportals/${custom_portal_code}/index.html"
 	
 	if [ -n "${custom_portal_code}" ] && [ -f "${custom_portal_path}" ]; then
 		# Copy custom portal to index.htm as a bash CGI wrapper
