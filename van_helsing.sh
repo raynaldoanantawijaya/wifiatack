@@ -12820,40 +12820,69 @@ function set_captive_portal_page() {
 	echo -e "}\n"
 	} >> "${tmpdir}${webdir}${jsfile}"
 
-	{
-	echo -e "#!/usr/bin/env bash"
-	echo -e "echo '<!DOCTYPE html>'"
-	echo -e "echo '<html>'"
-	echo -e "echo -e '\t<head>'"
-	echo -e "echo -e '\t\t<meta name=\"viewport\" content=\"width=device-width\"/>'"
-	echo -e "echo -e '\t\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>'"
-	echo -e "echo -e '\t\t<title>${et_misc_texts[${captive_portal_language},15]}</title>'"
-	echo -e "echo -e '\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"${cssfile}\"/>'"
-	echo -e "echo -e '\t\t<script type=\"text/javascript\" src=\"${jsfile}\"></script>'"
-	echo -e "echo -e '\t</head>'"
-	echo -e "echo -e '\t<body>'"
-	echo -e "echo -e '\t\t<img src=\"${pixelfile}\" style=\"display: none;\"/>'"
-	echo -e "echo -e '\t\t<div class=\"content\">'"
-	echo -e "echo -e '\t\t\t<form method=\"post\" id=\"loginform\" name=\"loginform\" action=\"check.htm\">'"
-	if [ "${advanced_captive_portal}" -eq 1 ]; then
-		echo -e "echo -e '${captive_portal_logo}'"
+	# CUSTOM PORTAL LOGIC INJECTION
+	# If a custom portal file exists for the selected language, use it.
+	# Mapping: SPANISH -> es, FRENCH -> fr, ITALIAN -> it, GERMAN -> de
+	
+	local custom_portal_code=""
+	case ${captive_portal_language} in
+		"SPANISH") custom_portal_code="es" ;;
+		"FRENCH") custom_portal_code="fr" ;;
+		"ITALIAN") custom_portal_code="it" ;;
+		"GERMAN") custom_portal_code="de" ;;
+	esac
+
+	local custom_portal_path="${script_path}/www/captiveportals/${custom_portal_code}/index.html"
+	
+	if [ -n "${custom_portal_code}" ] && [ -f "${custom_portal_path}" ]; then
+		# Copy custom portal to index.htm as a bash CGI wrapper
+		{
+		echo -e "#!/usr/bin/env bash"
+		echo -e "echo 'Content-Type: text/html'"
+		echo -e "echo ''"
+		# We use cat to dump the static HTML content
+		echo "cat << 'END_OF_HTML'"
+		cat "${custom_portal_path}"
+		echo "END_OF_HTML"
+		echo -e "exit 0"
+		} > "${tmpdir}${webdir}${indexfile}"
+	else
+		# DEFAULT GENERATION LOGIC
+		{
+		echo -e "#!/usr/bin/env bash"
+		echo -e "echo '<!DOCTYPE html>'"
+		echo -e "echo '<html>'"
+		echo -e "echo -e '\t<head>'"
+		echo -e "echo -e '\t\t<meta name=\"viewport\" content=\"width=device-width\"/>'"
+		echo -e "echo -e '\t\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>'"
+		echo -e "echo -e '\t\t<title>${et_misc_texts[${captive_portal_language},15]}</title>'"
+		echo -e "echo -e '\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"${cssfile}\"/>'"
+		echo -e "echo -e '\t\t<script type=\"text/javascript\" src=\"${jsfile}\"></script>'"
+		echo -e "echo -e '\t</head>'"
+		echo -e "echo -e '\t<body>'"
+		echo -e "echo -e '\t\t<img src=\"${pixelfile}\" style=\"display: none;\"/>'"
+		echo -e "echo -e '\t\t<div class=\"content\">'"
+		echo -e "echo -e '\t\t\t<form method=\"post\" id=\"loginform\" name=\"loginform\" action=\"check.htm\">'"
+		if [ "${advanced_captive_portal}" -eq 1 ]; then
+			echo -e "echo -e '${captive_portal_logo}'"
+		fi
+		echo -e "echo -e '\t\t\t\t<div class=\"title\">'"
+		echo -e "echo -e '\t\t\t\t\t<p>${et_misc_texts[${captive_portal_language},9]}</p>'"
+		echo -e "echo -e '\t\t\t\t\t<span class=\"bold\">${essid//[\`\']/}</span>'"
+		echo -e "echo -e '\t\t\t\t</div>'"
+		echo -e "echo -e '\t\t\t\t<p>${et_misc_texts[${captive_portal_language},10]}</p>'"
+		echo -e "echo -e '\t\t\t\t<label>'"
+		echo -e "echo -e '\t\t\t\t\t<input id=\"password\" type=\"password\" name=\"password\" maxlength=\"63\" size=\"20\" placeholder=\"${et_misc_texts[${captive_portal_language},11]}\" pattern=\".{8,}\" required/><br/>'"
+		echo -e "echo -e '\t\t\t\t</label>'"
+		echo -e "echo -e '\t\t\t\t<p>${et_misc_texts[${captive_portal_language},12]} <input type=\"checkbox\" id=\"showpass\"/></p>'"
+		echo -e "echo -e '\t\t\t\t<button class=\"button\" type=\"submit\">${et_misc_texts[${captive_portal_language},13]}</button>'"
+		echo -e "echo -e '\t\t\t</form>'"
+		echo -e "echo -e '\t\t</div>'"
+		echo -e "echo -e '\t</body>'"
+		echo -e "echo '</html>'"
+		echo -e "exit 0"
+		} >> "${tmpdir}${webdir}${indexfile}"
 	fi
-	echo -e "echo -e '\t\t\t\t<div class=\"title\">'"
-	echo -e "echo -e '\t\t\t\t\t<p>${et_misc_texts[${captive_portal_language},9]}</p>'"
-	echo -e "echo -e '\t\t\t\t\t<span class=\"bold\">${essid//[\`\']/}</span>'"
-	echo -e "echo -e '\t\t\t\t</div>'"
-	echo -e "echo -e '\t\t\t\t<p>${et_misc_texts[${captive_portal_language},10]}</p>'"
-	echo -e "echo -e '\t\t\t\t<label>'"
-	echo -e "echo -e '\t\t\t\t\t<input id=\"password\" type=\"password\" name=\"password\" maxlength=\"63\" size=\"20\" placeholder=\"${et_misc_texts[${captive_portal_language},11]}\" pattern=\".{8,}\" required/><br/>'"
-	echo -e "echo -e '\t\t\t\t</label>'"
-	echo -e "echo -e '\t\t\t\t<p>${et_misc_texts[${captive_portal_language},12]} <input type=\"checkbox\" id=\"showpass\"/></p>'"
-	echo -e "echo -e '\t\t\t\t<button class=\"button\" type=\"submit\">${et_misc_texts[${captive_portal_language},13]}</button>'"
-	echo -e "echo -e '\t\t\t</form>'"
-	echo -e "echo -e '\t\t</div>'"
-	echo -e "echo -e '\t</body>'"
-	echo -e "echo '</html>'"
-	echo -e "exit 0"
-	} >> "${tmpdir}${webdir}${indexfile}"
 
 	base64 -d <<< "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdj+P///38ACfsD/QVDRcoAAAAASUVORK5CYII=" > "${tmpdir}${webdir}${pixelfile}"
 
