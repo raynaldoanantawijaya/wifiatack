@@ -1,4 +1,4 @@
-# Panduan Master: Airgeddon & Wi-Fi Hacking (Lengkap)
+# Panduan Master: Van Helsing & Wi-Fi Hacking (Lengkap)
 
 Ini adalah kitab utama Anda. Berisi semua langkah dari nol sampai sukses, termasuk penggunaan Portal Custom dan Script PMKID Buatan.
 
@@ -11,21 +11,21 @@ Agar tidak error atau Wi-Fi hilang-hilang di VM.
 ## BAB 1: Persiapan & Booster (PENTING)
 Lakukan ini **setiap kali** baru menyalakan Kali Linux agar performa maksimal dan Wi-Fi stabil.
 
-1.  **Copy Script Booster** ke folder airgeddon.
+1.  **Copy Script Booster** ke folder Van Helsing.
 2.  **Jalankan Scriptnya**:
     ```bash
     # Ini akan mematikan semua gangguan & menaikkan power sinyal
     sudo bash stability_booster.sh
     ```
-3.  **Baru Jalankan Airgeddon**:
+3.  **Baru Jalankan Van Helsing**:
     ```bash
-    sudo bash airgeddon.sh
+    sudo bash Van Helsing.sh
     ```
 
 ---
 
 ## BAB 2: Menu Awal (Setting Up)
-Setiap kali masuk `airgeddon`, lakukan urutan ini dulu:
+Setiap kali masuk `Van Helsing`, lakukan urutan ini dulu:
 
 1.  **Select Language**: Ketik `1` (English).
 2.  **Check Tools**: Tekan `Enter` sampai masuk menu utama.
@@ -46,18 +46,18 @@ Sebelum menyerang, pilih dulu mau pakai tampilan apa.
 *   **Pakai IndiHome**: Jalankan perintah ini di tab terminal baru (Ctrl+Shift+T):
     ```bash
     # Asumsi file ada di Desktop/indihome_portal
-    cp -r ~/Desktop/indihome_portal/* ~/airgeddon/www/captiveportals/es/
+    cp -r ~/Desktop/indihome_portal/* ~/Van Helsing/www/captiveportals/es/
     ```
     *(Kita "membajak" slot bahasa Spanyol)*
 
 *   **Pakai Wifi.id**:
     ```bash
-    cp -r ~/Desktop/wifi_id_portal/* ~/airgeddon/www/captiveportals/fr/
+    cp -r ~/Desktop/wifi_id_portal/* ~/Van Helsing/www/captiveportals/fr/
     ```
     *(Kita "membajak" slot bahasa Prancis)*
 
 ### C. Eksekusi Serangan
-Di menu utama Airgeddon:
+Di menu utama Van Helsing:
 1.  Pilih Menu `7` (**Evil Twin attacks**).
 2.  Pilih Menu `9` (**Captive portal attack**).
 3.  **Scan Target**: Tekan Enter -> Tunggu target muncul -> Ctrl+C.
@@ -99,7 +99,7 @@ Kalau target sepi (gak ada orang connect), pakai cara ini.
 ### Cara Manual (Lebih Powerfull - Pakai Script Super)
 Saya sudah buatkan script khusus biar lebih tembus router baru.
 
-1.  Tutup Airgeddon.
+1.  Tutup Van Helsing.
 2.  Buka Terminal biasa.
 3.  Jalankan script super:
     ```bash
@@ -124,7 +124,7 @@ Dapat file PMKID belum berarti dapat password (masih terkunci). Anda butuh PC ku
 ## BAB 6: Beres-beres (PENTING)
 Setelah selesai main hacker-hackeran, kembalikan laptop ke kondisi normal.
 
-1.  Di Airgeddon: Tekan `Ctrl+C` di terminal utama -> Pilih Menu `3` (Managed Mode) -> Exit.
+1.  Di Van Helsing: Tekan `Ctrl+C` di terminal utama -> Pilih Menu `3` (Managed Mode) -> Exit.
 2.  **Jalankan Script Restore**:
     ```bash
     # Ini akan menyalakan internet & mereset power Wi-Fi ke normal
