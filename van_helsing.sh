@@ -15906,9 +15906,19 @@ function et_prerequisites() {
 		language_strings "${language}" 115 "read"
 		if set_captive_portal_language; then
 			language_strings "${language}" 319 "blue"
-			ask_yesno 710 "no"
-			if [ "${yesno}" = "y" ]; then
-				advanced_captive_portal=1
+			# SKIP-ADVANCED-PROMPT-PATCH
+			# If using a custom portal (Language is NOT English), skip this prompt and force NO.
+			# Because custom portals (IndiHome, Biznet, etc.) replace the default template anyway.
+			
+			if [ "${captive_portal_language}" = "ENGLISH" ]; then
+				ask_yesno 710 "no"
+				if [ "${yesno}" = "y" ]; then
+					advanced_captive_portal=1
+				fi
+			else
+				# For custom portals, we don't need the advanced vendor logic.
+				# The set_captive_portal_page function handles the file copying.
+				advanced_captive_portal=0
 			fi
 
 			prepare_captive_portal_data
