@@ -10089,21 +10089,15 @@ function set_captive_portal_language() {
 	echo
 	language_strings "${language}" 318 "green"
 	print_simple_separator
-	language_strings "${language}" 266
+	language_strings "${language}" 266 # Return to menu
 	print_simple_separator
-	language_strings "${language}" 79
-	language_strings "${language}" 80
-	language_strings "${language}" 113
-	language_strings "${language}" 116
-	language_strings "${language}" 249
-	language_strings "${language}" 308
-	language_strings "${language}" 320
-	language_strings "${language}" 482
-	language_strings "${language}" 58
-	language_strings "${language}" 331
-	language_strings "${language}" 519
-	language_strings "${language}" 687
-	language_strings "${language}" 717
+	
+	# CUSTOM PORTAL MENU
+	echo "1.  English (Default)"
+	echo "2.  IndiHome (Psychological Warfare)"
+	echo "3.  Biznet (Standard)"
+	echo "4.  MyRepublic (Standard)"
+	echo "5.  Wifi.id (Standard)"
 	print_hint
 
 	read -rp "> " captive_portal_language_selected
@@ -10117,40 +10111,16 @@ function set_captive_portal_language() {
 			captive_portal_language="ENGLISH"
 		;;
 		2)
-			captive_portal_language="SPANISH"
+			captive_portal_language="SPANISH" # Mapped to IndiHome
 		;;
 		3)
-			captive_portal_language="FRENCH"
+			captive_portal_language="FRENCH" # Mapped to Biznet
 		;;
 		4)
-			captive_portal_language="CATALAN"
+			captive_portal_language="ITALIAN" # Mapped to MyRepublic
 		;;
 		5)
-			captive_portal_language="PORTUGUESE"
-		;;
-		6)
-			captive_portal_language="RUSSIAN"
-		;;
-		7)
-			captive_portal_language="GREEK"
-		;;
-		8)
-			captive_portal_language="ITALIAN"
-		;;
-		9)
-			captive_portal_language="POLISH"
-		;;
-		10)
-			captive_portal_language="GERMAN"
-		;;
-		11)
-			captive_portal_language="TURKISH"
-		;;
-		12)
-			captive_portal_language="ARABIC"
-		;;
-		13)
-			captive_portal_language="CHINESE"
+			captive_portal_language="GERMAN" # Mapped to Wifi.id
 		;;
 		*)
 			invalid_captive_portal_language_selected
