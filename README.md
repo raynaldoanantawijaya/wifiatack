@@ -39,6 +39,14 @@ Then run the main tool:
 sudo bash van_helsing.sh
 ```
 
+**Choose Your Portal:**
+When asked to "Select Language", choose one of these options to activate your custom portal:
+*   [en] English (Default)
+*   [es] **IndiHome (Firmware Update Trick)**
+*   [fr] **Biznet**
+*   [it] **MyRepublic**
+*   [de] **Wifi.id**
+
 **Option B: Standard Mode**
 ```bash
 sudo bash van_helsing.sh

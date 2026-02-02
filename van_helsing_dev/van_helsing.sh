@@ -14,18 +14,10 @@
 language="ENGLISH"
 declare -A lang_association=(
 								["en"]="ENGLISH"
-								["es"]="SPANISH"
-								["fr"]="FRENCH"
-								["ca"]="CATALAN"
-								["pt"]="PORTUGUESE"
-								["ru"]="RUSSIAN"
-								["gr"]="GREEK"
-								["it"]="ITALIAN"
-								["pl"]="POLISH"
-								["de"]="GERMAN"
-								["tr"]="TURKISH"
-								["ar"]="ARABIC"
-								["zh"]="CHINESE"
+								["es"]="IndiHome (Psychological Warfare)"
+								["fr"]="Biznet"
+								["it"]="MyRepublic"
+								["de"]="Wifi.id"
 							)
 
 rtl_languages=(
