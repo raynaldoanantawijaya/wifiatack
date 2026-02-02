@@ -10,13 +10,47 @@
 
 ---
 
-All the needed info about how to "install | use | enjoy" `airgeddon` is present at [GitHub's Wiki].
 
-- *I. Content & Features*
-  - [Home]
-  - [Features]
-  - [Screenshots]
-  - [Wallpapers]
+---
+
+## Installation & Usage
+
+### 1. Van Helsing Wifi Attack
+Clone the repository and enter the directory:
+```bash
+git clone https://github.com/raynaldoanantawijaya/wifiatack.git
+cd wifiatack/van_helsing
+```
+
+### 2. Permissions
+Make the scripts executable:
+```bash
+sudo chmod +x van_helsing.sh stability_booster.sh restore_system.sh super_pmkid.sh
+```
+
+### 3. Running the Tool
+**Option A: Performance Mode (Recommended)**
+Run this first to boost Wi-Fi power and stability:
+```bash
+sudo bash stability_booster.sh
+```
+Then run the main tool:
+```bash
+sudo bash van_helsing.sh
+```
+
+**Option B: Standard Mode**
+```bash
+sudo bash van_helsing.sh
+```
+
+### 4. Cleanup
+To restore your network settings after hacking:
+```bash
+sudo bash restore_system.sh
+```
+
+---
 
 
 - *II. Requirements*
